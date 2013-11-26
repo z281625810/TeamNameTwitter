@@ -1,0 +1,14 @@
+{
+  "name": "tnt",
+  "version": "0.0.1",
+  "main": "server.js",
+  "dependencies": {
+    "express": "latest",
+    "ejs": "latest",
+    "Sentimental": "latest"
+  },
+  "engines": {
+    "node": "latest",
+    "npm": "latest"
+  }
+}
