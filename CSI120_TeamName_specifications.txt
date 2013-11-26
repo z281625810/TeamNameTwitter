@@ -1,0 +1,78 @@
+Feature: User searches for tweets
+   In order to display the tweets
+   The user needs the ability to search
+   for tweets and get results from the Twitter API
+
+   Scenario: User enters invalid data into the tweets search form
+      Given: The tweets search form is available
+       And: The tweets search form is visible
+      When: The user fills the hashtags form field with invalid information
+       And: The user presses the Search button
+      Then: The user should see "Please enter two hashtags to search for"
+
+   Scenario: User doesn't enter any hashtags into the tweets search form
+      Given: The tweets search form is available
+       And: The tweets search form is visible
+      When: The user doesn't enter any hashtags into the tweets search form
+       And: The user presses the Search button
+      Then: The user should see "Please enter two hashtags to search for"
+
+   Scenario: User doesn't modify the default geolocation radius or date range
+      Given: The tweets search form is available
+       And: The tweets search form is visible
+      When: The user doesn't modify the default geolocation radius
+       And: The user doesn't modify the default date range
+       And: The user presses the Search button
+      Then: The user should see results with the default date range and geolocation radius
+
+   Scenario: User enters valid data into the tweets search form
+      Given: The tweets search form is available
+       And: The tweets search form is visible
+      When: The user fills the form with valid information
+       And: The user presses the Search button
+      Then: The user should see a list of results of his searched hashtags
+
+
+Feature: Display the results of the hashtags search in a list
+   Display the results in a list
+   that is going to show the matching tweets
+   along with additional information about the tweets
+
+   Scenario: There is no response or error was received from Twitter API
+      Given: The user entered valid information into the search form
+      When: Requesting a list of tweets from Twitter API
+       And: No response or error was received from Twitter
+      Then: The user should see "Having trouble talking to Twitter. Please try again later!"
+
+   Scenario: Empty response was received from Twitter API
+      Given: The user entered valid information into the search form
+      When: Requesting a list of tweets from Twitter API
+       And: And an empty response was received from Twitter API
+      Then: The user should see "Sorry, no tweets matched your search"
+
+   Scenario: A bunch of tweets received as a result of the search
+      Given: The user entered valid information into the search form
+      When: Requesting a list of tweets from Twitter API
+       And: A response containing search results was received from Twitter API
+      Then: The user should see a list of results for the searched hashtags
+
+
+Feature: Display the results of the hashtags search on a map and compare the Sentimental scoree
+   Display the results on a map of the U.S. in the geolocation range 
+   as well as other locations where the same hashtags have been used
+   and show the similarities between the user location and the rest of the U.S. tweets' Sentimental score
+
+   Scenario: A bunch of tweets received as a result of the search
+      Given: The user entered valid information into the search form
+      When: Requesting a list of tweets from Twitter API
+       And: A response containing search results was received from Twitter API
+      Then: The user should see the results as pins on the map
+       And: The user should see the results of the same hashtags searched from the rest of the U.S. 
+       And: The pins should be colored depending on the Sentimental score
+
+   Scenario: A bunch of tweets received as a result of the search
+      Given: A response containing search results was received from Twitter API
+       And: The local results are displayed in a list and on the map
+       And: The U.S. wide results are displayed on the map
+      When: The user clicks on one tweet from the results list
+      Then: The user should see a list of locations where tweets have the same Sentimental score as the selected tweet
