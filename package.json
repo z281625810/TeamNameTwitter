@@ -5,7 +5,8 @@
   "dependencies": {
     "express": "latest",
     "ejs": "latest",
-    "Sentimental": "latest"
+    "Sentimental": "latest",
+    "twitter": "latest"
   },
   "engines": {
     "node": "latest",
