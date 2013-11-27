@@ -1,13 +1,11 @@
 var express = require('express'),
-	routes = require('./routes'),
-	http = require('http'),
+	ejs = require('ejs'),
 	sentimental = require('Sentimental'),
-	twitter = require('twitter');
+	twitter = require('twitter'),
+	routes = require('./routes'),
+	http = require('http');
+
 var app = express();
-
-var sentimental = require('Sentimental');
-var ejs = require('ejs');
-
 
 app.configure(function(){
 	app.set('views', __dirname + '/views');
