@@ -1,7 +1,10 @@
 var express = require('express'),
 	ejs = require('ejs'),
 	sentimental = require('Sentimental'),
-	routes = require('./routes'),
+	routes = {
+		index: require('./routes').index,
+		twitter: require('./routes/twitter.js')
+	},
 	http = require('http');
 
 var app = express();
@@ -24,10 +27,9 @@ var tweet_helper = require('./scripts/twitter.js');
 
 tweet_helper.authentificate();
 //tweet_helper.verifyCredentials();
+//tweet_helper.search('#BTV AND #Vermont');
 
-tweet_helper.search('#BTV AND #Vermont');
-
-//app.get('/', routes.searchTweets);
+app.get('/twitter/:hashtag1/:hashtag2', routes.twitter.search);
 
 http.createServer(app).listen(3000);
 
