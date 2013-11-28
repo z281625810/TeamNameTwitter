@@ -1,7 +1,6 @@
 var express = require('express'),
 	ejs = require('ejs'),
 	sentimental = require('Sentimental'),
-	twitter = require('twitter'),
 	routes = require('./routes'),
 	http = require('http');
 
@@ -17,6 +16,18 @@ app.configure(function(){
 });
 
 app.get('/', routes.index);
+
+// ============================================================
+// Twitter Stuff
+// ============================================================
+var tweet_helper = require('./scripts/twitter.js');
+
+tweet_helper.authentificate();
+//tweet_helper.verifyCredentials();
+
+tweet_helper.search('#BTV AND #Vermont');
+
+//app.get('/', routes.searchTweets);
 
 http.createServer(app).listen(3000);
 
