@@ -1,9 +1,11 @@
 var express = require('express'),
 	engine = require('ejs-locals'),
 	sentimental = require('Sentimental'),
-	twitter = require('twitter'),
+	//twitter = require('twitter'),
 	routes = require('./routes'),
-	http = require('http');
+	twitterRoute = require('./routes/twitter'),
+	http = require('http'),
+	util = require('util');
 
 var app = express();
 
@@ -21,10 +23,12 @@ app.configure(function(){
 
 http.createServer(app).listen(3000);
 
+console.log('Server running at http://localhost:3000');
+
 
 app.get('/', routes.index);
 // ============================================================
 // Twitter Stuff
 // ============================================================
-
-console.log('Server running at http://localhost:3000');
+app.post('/twitter', twitterRoute.search);
+//console.log(util.inspect(routes));
