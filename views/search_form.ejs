@@ -1,0 +1,31 @@
+<% layout('layout') -%>
+
+<div id = "tweetForm">
+	<fieldset id = "fieldSet">
+		<legend>Twitter Search</legend>
+		
+		<label>Enter Hashtags: 
+			<input type = "text" name ="hashtags" id = "hashtags">
+		</label>
+		
+		<label>Location Radius: 
+			<input type = "range" min = "1" and max = "10000" name = "radius" id = "radius">
+		</label>
+		
+		<br>
+		
+		<label>Select Date: 
+			<input type = "date" name = "date" id = "date">
+		</label>
+	    
+	    <label>Sort by:
+			<input type = "radio" name = "sentimentalTweets" id = "happyTweets" value = "HT"> Happy Tweets
+			<input type = "radio" name = "sentimentalTweets" id = "sadTweets" value = "ST"> Sad Tweets
+		</label>
+
+		<br>
+		
+		<input type = "submit" id = "btn" value = "Search" />
+
+	</fieldset>
+</div>

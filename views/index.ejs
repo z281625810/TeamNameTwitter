@@ -1,3 +1,12 @@
 <% layout('layout') -%>
 
-<h1>Index Page</h1>
+<div id="wrapper">
+	<div id = "leftColumn">
+		<%- partial('search_form') %>
+		<%- partial('google_map') %>
+	</div>
+
+	<div id = "rightColumn">
+		<%- partial('tweets_pane') %>
+	</div>
+</div>

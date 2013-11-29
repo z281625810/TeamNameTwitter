@@ -1,0 +1,62 @@
+*{
+border-radius:7px;
+}
+
+body{
+background-image: linear-gradient(to bottom, white, red);
+}
+
+
+#wrapper{
+width:80%;
+margin:auto;
+background-image: linear-gradient(to bottom, white, blue);
+height:650px;
+}
+
+#leftColumn{
+float:left;
+width:59.9%;
+height:99.8%;
+border:1px solid black;
+}
+
+#tweetForm{
+height:19.2%;
+}
+
+#googleMap{
+border:1px solid black;
+height:80.6%;
+background-image: linear-gradient(to bottom, yellow,black);
+}
+
+#rightColumn{
+margin-left:60%;
+width:39.9%;
+height:99.8%;
+border:1px solid black;
+}
+
+.hder{
+border-bottom:1px solid black;
+text-align :center;
+color:pink;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
