@@ -25,10 +25,11 @@ exports.search = function(req, res){
 		formSubmitted = true;
 
 	T.get('search/tweets', { q: 'banana since:2011-11-11', count: 100 }, function(err, reply) {
-		console.log(util.inspect(reply));
+		//console.log(util.inspect(reply));
 		console.log('Error: ' + err);
  		res.render('index', {
  			reply: reply,
+ 			formSubmitted: true,
  			title: 'Search Results'
  		});
 	});

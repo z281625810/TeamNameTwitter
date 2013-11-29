@@ -1,4 +1,25 @@
 <header class= "hder">Most Frequently Searched For Hashtags</header>
 	<div id="tweets">
-  		<ul></ul>
+
+		<% if( typeof(formSubmitted) !== 'undefined' ) { %>
+
+  		<table>
+  			<tr>
+  				<th>From:</th>
+  				<th>Tweet:</th>
+  				<th>Date:</th>
+  			</tr>
+
+  			<% for( var i=0; i< reply.statuses.length; i++ ) { %>
+  				<tr> 
+  					<td> <%= reply.statuses[i].user.name %> </td>
+  					<td> <%= reply.statuses[i].text %> </td>
+  					<td> <%= reply.statuses[i].created_at %> </td>
+  				</tr>
+  			<% } %>
+
+  		</table>
+
+  		<% } %>
+
   	</div>
