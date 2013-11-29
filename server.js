@@ -19,19 +19,12 @@ app.configure(function(){
   	app.use(app.router);
 });
 
+http.createServer(app).listen(3000);
+
+
+app.get('/', routes.index);
 // ============================================================
 // Twitter Stuff
 // ============================================================
-//var tweet_helper = require('./scripts/twitter.js');
-
-//tweet_helper.authentificate();
-//tweet_helper.verifyCredentials();
-
-//tweet_helper.search('#BTV AND #Vermont');
-
-
-http.createServer(app).listen(3000);
-
-app.get('/', routes.index);
 
 console.log('Server running at http://localhost:3000');
