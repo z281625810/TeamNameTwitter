@@ -6,7 +6,8 @@
     "express": "latest",
     "ejs": "latest",
     "Sentimental": "latest",
-    "twit": "latest"
+    "twit": "latest",
+    "ejs-locals": "~1.0.2"
   },
   "engines": {
     "node": "latest",
