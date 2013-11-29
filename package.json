@@ -6,7 +6,7 @@
     "express": "latest",
     "ejs": "latest",
     "Sentimental": "latest",
-    "twitter": "latest"
+    "twit": "latest"
   },
   "engines": {
     "node": "latest",
