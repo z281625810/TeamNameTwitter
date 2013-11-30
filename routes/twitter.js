@@ -34,6 +34,7 @@ exports.search = function(req, res){
  			title: 'Search Results'
  		});
 	});
+};
 
 
 	/*
