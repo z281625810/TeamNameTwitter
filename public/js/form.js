@@ -30,6 +30,25 @@ $(document).ready(function(){
 	});
 	*/
 
+	// Get today's date
+	var today = new Date();
+	// Set default date on form for two weeks ago
+	$('#date').val(new Date(
+			today.getFullYear(),
+			today.getMonth(), 
+			today.getDate() - 14
+		).toJSON().slice(0,10));
+
+	// Sync miles input value with range input
+	$('input#radius').change(function(){
+		$('input#miles').val($('input#radius').val());
+	});
+
+	// Sync range input value with miles input
+	$('input#miles').change(function(){
+		$('input#radius').val($('input#miles').val());
+	});	
+
 	$("input#hashtags").blur(function(){
 
 		$("input#hashtags").val($.trim( $("input#hashtags").val() ));
