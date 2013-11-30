@@ -1,6 +1,8 @@
-var Twit = require('twit');
+var Twit = require('twit'),
+	util = require('util'),
+	string = require('string');
+
 var twitterCredentials = require(require('path').normalize(__dirname + '/../scripts/twitter_credentials.js'));
-var util = require('util');
 
 var T = new Twit( twitterCredentials.keys() );
 /*
@@ -18,8 +20,7 @@ exports.search = function(req, res){
 
 exports.search = function(req, res){
 	
-	var hashtag1 = req.body.hashtag1,
-		hashtag2 = req.body.hashtag2,
+	var hashtags = req.body.hashtags,
 		radius = req.body.radius,
 		happyTweets = req.body.happyTweets ? true : false,
 		formSubmitted = true;
@@ -43,5 +44,13 @@ exports.search = function(req, res){
 		happyTweets: req.body.happyTweets ? true : false,
 		formSubmitted: true
 	});
-	*/
+	
 };
+
+var processHashtags = function(string){
+	var processedString = '';
+	while( hashtag != '' ){
+		processedString += 
+	}
+};
+*/
