@@ -38,7 +38,7 @@ $(document).ready(function(){
 		console.log('You entered ' + hashtagInputs.length + ' hashtags');
 
 		if(hashtagInputs.length < 2){
-			$("<div class='alert alert-danger'>Please enter at least 2 hashtags</div>").insertAfter(("input#hashtags"));
+			//$("<div class='alert alert-danger'>Please enter at least 2 hashtags</div>").insertAfter(("input#hashtags"));
 		}
 	});
 

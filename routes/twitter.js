@@ -1,6 +1,7 @@
 var Twit = require('twit'),
 	util = require('util'),
-	string = require('string');
+	string = require('string'),
+	check = require('validator').check;
 
 var twitterCredentials = require(require('path').normalize(__dirname + '/../scripts/twitter_credentials.js'));
 
@@ -22,12 +23,20 @@ exports.search = function(req, res){
 	
 	var hashtags = req.body.hashtags,
 		radius = req.body.radius,
-		happyTweets = req.body.happyTweets ? true : false,
+		happyTweets = req.body.sentimentalTweets ? true : false,
 		formSubmitted = true;
+
+	console.log('hashtags: '+hashtags);
+	console.log('radius: '+radius);
+	console.log('happyTweets: '+happyTweets);
+	console.log('formSubmitted: ' + formSubmitted);
+
+	// Checks to see if user entered at least 2 hashtags
+	check(hashtags, 'Please enter at least 2 hashtags').regex(/^([a-zA-Z0-9]+(\s?)){2,10}$/i);
 
 	T.get('search/tweets', { q: 'banana since:2011-11-11', count: 100 }, function(err, reply) {
 		//console.log(util.inspect(reply));
-		console.log('Error: ' + err);
+		//console.log('Error: ' + err);
  		res.render('index', {
  			reply: reply,
  			formSubmitted: true,
