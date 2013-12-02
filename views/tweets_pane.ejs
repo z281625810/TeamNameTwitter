@@ -12,6 +12,7 @@
 
   			<% for( var i=0; i< reply.statuses.length; i++ ) { %>
   				<tr> 
+            <td> <img scr="<%= reply.statuses[i].profile_image_url %>"> </td>
   					<td> <%= reply.statuses[i].user.name %> </td>
   					<td> <%= reply.statuses[i].text %> </td>
   					<td> <%= reply.statuses[i].created_at %> </td>
