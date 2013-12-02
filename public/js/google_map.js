@@ -6,12 +6,22 @@ $(document).ready(function(){
 
 	initGoogleMaps();
   
-  addUserLocation(1);
-  
-  markerCluster = new MarkerClusterer(map, markers);
   drawMarkers(); 
 
 });
+
+function initClusters(stuff1, stuff2){
+    if( markerCluster == null ){
+      addUserLocation(1, stuff1, stuff2);
+
+      //drawMarkers(stuff1, stuff2);
+
+    } else{
+      addSearchLocation(stuff1, stuff2);
+    }
+    console.log(stuff1);
+    
+}
 
 // Initialize Google Maps
 var initGoogleMaps = function(){
@@ -34,21 +44,30 @@ var initGoogleMaps = function(){
     });  
 };
 
-function addUserLocation(count) {
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition( function(position) {
-    
+
+
+      markerCluster = new MarkerClusterer(map, markers, {zoomOnClick: false});
+      //drawMarkers();
+
       for(var i=0; i<count; i++){
         var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         var marker = new google.maps.Marker({position: latlng});
         markerCluster.addMarker(marker);
       }
+
+      addSearchLocation(stuff1, stuff2);
     });
 
   }
 }
 
 function addSearchLocation(address, count){
+
+  console.log( typeof markerCluster);
+
+  if (typeof address == 'string'){
   if (address){
     var geocodingBase = 'http://maps.googleapis.com/maps/api/geocode/json?address=';
     var geocodingURL = geocodingBase + encodeURIComponent(address) + '&sensor=false';
@@ -61,23 +80,34 @@ function addSearchLocation(address, count){
       }
     })
   } else {
-    addUserLocation(count);
+    };
+  } else {
+      console.log( typeof markerCluster);
+      console.log(markerCluster);
+      for(var i=0; i<count; i++){
+        if(address[i].geo){
+          var latlng = new google.maps.LatLng(address[i].geo.coordinates[0], address[i].geo.coordinates[1]);
+          var marker = new google.maps.Marker({position: latlng});
+          markerCluster.addMarker(marker);
   }
+      }
+    }
 
 }
 
 function addMarkers(lat, lng, count){
-
+  /*
   for(var i=0; i<count; i++){
 
     var some_location = new google.maps.LatLng(lat, lng);
     var some_marker = new google.maps.Marker({position: some_location});
     markers.push(some_marker);
   }
+  */
 }
 
 function drawMarkers(){
   console.log("Drawing!");
   console.log(markers);
- markerCluster = new MarkerClusterer(map, markers, {zoomOnClick: false}); 
+  //addSearchLocation(stuff1, stuff2);
 }
