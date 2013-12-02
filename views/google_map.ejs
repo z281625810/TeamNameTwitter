@@ -10,7 +10,8 @@
 	<script>
 		var formSubmitted = true;
 		var user_location = '<%= user_location %>';
-		var reply = '<%= reply %>';
+		var reply = <%- JSON.stringify(reply) %>;
 
+		addSearchLocation(user_location, reply.statuses.length);
 	</script>
 <% } %>
