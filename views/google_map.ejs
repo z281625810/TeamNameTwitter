@@ -1,4 +1,5 @@
 <% script('https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true') -%>
+<% script('http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/markerclusterer.js') -%>
 <% script('js/google_map.js') -%>
 <% script('js/gmaps.js') -%>
 
@@ -10,5 +11,6 @@
 		var formSubmitted = true;
 		var user_location = '<%= user_location %>';
 		var reply = '<%= reply %>';
+
 	</script>
 <% } %>
