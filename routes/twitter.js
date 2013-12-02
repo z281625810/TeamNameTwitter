@@ -84,6 +84,8 @@ exports.search = function(req, res){
 		console.log('Error: ' + err);
  		res.render('index', {
  			reply: reply,
+ 			hashtags: tagsArray.join(" "),
+ 			radius: radius,
  			popular_reply: popular_reply,
  			user_location: search_location,
  			formSubmitted: true,

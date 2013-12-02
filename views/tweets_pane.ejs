@@ -5,19 +5,34 @@
 
   		<table>
   			<tr>
-  				<th>From:</th>
+  				<th colspan="2">From:</th>
   				<th>Tweet:</th>
   				<th>Date:</th>
+          <th>Score:</th>
   			</tr>
 
+        <tr>
+          <td colspan="10" class="tweets_title">Search results for:<strong><%= hashtags %></strong> near <strong><%= user_location %></strong> withing <%= radius %>mi </td>
+        </tr>
   			<% for( var i=0; i< reply.statuses.length; i++ ) { %>
   				<tr> 
-            <td> <img scr="<%= reply.statuses[i].profile_image_url %>"> </td>
+            <td> <img src="<%= reply.statuses[i].user.profile_image_url %>"> </td>
   					<td> <%= reply.statuses[i].user.name %> </td>
   					<td> <%= reply.statuses[i].text %> </td>
   					<td> <%= reply.statuses[i].created_at %> </td>
+            <td> 6 </td>
   				</tr>
   			<% } %>
+        <td colspan="10" class="tweets_title">Search results for:<strong><%= hashtags %></strong> across the <strong>U.S.</strong></td>
+        <% for( var i=0; i< popular_reply.statuses.length; i++ ) { %>
+          <tr> 
+            <td> <img src="<%= popular_reply.statuses[i].user.profile_image_url %>"> </td>
+            <td> <%= popular_reply.statuses[i].user.name %> </td>
+            <td> <%= popular_reply.statuses[i].text %> </td>
+            <td> <%= popular_reply.statuses[i].created_at %> </td>
+            <td> 3 </td>
+          </tr>
+        <% } %>
 
   		</table>
 
