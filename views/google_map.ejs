@@ -11,7 +11,9 @@
 		var formSubmitted = true;
 		var user_location = '<%= user_location %>';
 		var reply = <%- JSON.stringify(reply) %>;
+		var popular_reply = <%- JSON.stringify(popular_reply) %>;
 
-		addSearchLocation(user_location, reply.statuses.length);
+		initClusters(user_location, reply.statuses.length);
+		initClusters(popular_reply.statuses, popular_reply.statuses.length);
 	</script>
 <% } %>

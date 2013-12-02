@@ -52,23 +52,44 @@ exports.search = function(req, res){
 
 	var query = tagsArray.join(" ");
 		query += " since:" + date;
-		query += " near:Burlington, VT";
+		query += " near:" + search_location;
 		query += " within:" + radius + "mi";
 
 	console.log(query);
 	//query = encodeURIComponent(query);
 	//console.log(query);
 
+	//T.get('geo/search', { query: 'USA', granularity: 'country' }, function(err, reply) {
+	//	console.log('Country: '+ reply);
+	//	console.log('Err: '+ err);
+	//});
+
+	var USAcountryID = '96683cc9126741d1';
+	var popular_query = tagsArray.join(" ") + " place:" + USAcountryID + " since:" + date;
+	var popular_reply;
+
+	console.log(popular_query);
+
+	// Get the popular stuff from across the US
+	T.get('search/tweets', { q: popular_query, count: 100 }, function(err, reply) {	
+		popular_reply = reply;
+		//console.log("err: "+err);
+		//console.log(reply.statuses.length);
+	
+
+	console.log(popular_reply);
 
 	T.get('search/tweets', { q: query, count: 100 }, function(err, reply) {
-		//console.log(util.inspect(reply));
 		console.log('Error: ' + err);
  		res.render('index', {
  			reply: reply,
+ 			popular_reply: popular_reply,
  			user_location: search_location,
  			formSubmitted: true,
  			title: 'Search Results'
  		});
+	});
+
 	});
 };
 
