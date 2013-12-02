@@ -28,3 +28,4 @@ $RECYCLE.BIN/
 .DS_Store
 
 twitter_credentials.js
+node_modules/
