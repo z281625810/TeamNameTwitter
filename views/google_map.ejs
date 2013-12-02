@@ -4,3 +4,11 @@
 
 <div id = "googleMap">
 </div>
+
+<% if(typeof formSubmitted != 'undefined' && formSubmitted == true) { %>
+	<script>
+		var formSubmitted = true;
+		var user_location = '<%= user_location %>';
+		var reply = '<%= reply %>';
+	</script>
+<% } %>

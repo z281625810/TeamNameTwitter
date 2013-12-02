@@ -24,14 +24,20 @@ exports.search = function(req, res){
 	var hashtags = req.body.hashtags,
 		date = req.body.date,
 		radius = req.body.radius,
+		search_location = req.body.search_location,
 		happyTweets = req.body.sentimentalTweets ? true : false,
 		formSubmitted = true;
 
-	console.log('hashtags: '+hashtags);
-	console.log('date: '+date);
-	console.log('radius: '+radius);
-	console.log('happyTweets: '+happyTweets);
-	console.log('formSubmitted: ' + formSubmitted);
+	console.log('location: ' + search_location);
+	//if( search_location == '' )
+	//	search_location = null;
+	//console.log('location: ' + location);
+
+	//console.log('hashtags: '+hashtags);
+	//console.log('date: '+date);
+	//console.log('radius: '+radius);
+	//console.log('happyTweets: '+happyTweets);
+	//console.log('formSubmitted: ' + formSubmitted);
 
 	// Checks to see if user entered at least 2 hashtags
 	//check(hashtags, 'Please enter at least 2 hashtags').regex(/^([a-zA-Z0-9]+(\s?)){2,10}$/i);
@@ -55,10 +61,11 @@ exports.search = function(req, res){
 
 
 	T.get('search/tweets', { q: query, count: 100 }, function(err, reply) {
-		console.log(util.inspect(reply));
+		//console.log(util.inspect(reply));
 		console.log('Error: ' + err);
  		res.render('index', {
  			reply: reply,
+ 			user_location: search_location,
  			formSubmitted: true,
  			title: 'Search Results'
  		});
