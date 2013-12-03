@@ -77,7 +77,7 @@ exports.search = function(req, res){
 		//console.log(reply.statuses.length);
 	
 
-	console.log(popular_reply);
+	//console.log(popular_reply);
 
 	T.get('search/tweets', { q: query, count: 100 }, function(err, reply) {
 		console.log(util.inspect(reply));
