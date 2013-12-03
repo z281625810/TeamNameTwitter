@@ -1,4 +1,6 @@
 <header class= "hder">Most Frequently Searched For Hashtags</header>
+  <div id="frequent_tweets">
+  </div>
 	<div id="tweets">
 
 		<% if( typeof(formSubmitted) !== 'undefined' ) { %>
@@ -12,7 +14,7 @@
   			</tr>
 
         <tr>
-          <td colspan="10" class="tweets_title">Search results for:<strong><%= hashtags %></strong> near <strong><%= user_location %></strong> withing <%= radius %>mi </td>
+          <td colspan="10" class="tweets_title">Search results for:<strong><%= hashtags %></strong> near <strong><%= user_location %></strong> within <%= radius %>mi </td>
         </tr>
   			<% for( var i=0; i< reply.statuses.length; i++ ) { %>
   				<tr> 
