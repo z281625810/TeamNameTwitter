@@ -21,10 +21,12 @@ app.configure(function(){
   	app.use(app.router);
 });
 
-http.createServer(app);
-server.listen(process.env.PORT || 3000);
+var port = process.env.PORT || 3000;
 
-console.log('Server running at http://localhost:3000');
+http.createServer(app);
+app.listen( port );
+
+console.log('Server running at http://localhost:' + port );
 
 
 app.get('/', routes.index);
